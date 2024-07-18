@@ -74,3 +74,9 @@ void test_encender_dos_leds_apagar_uno_consultar_estado(void){
     TEST_ASSERT_TRUE(leds_is_led_on(4));
     TEST_ASSERT_FALSE(leds_is_led_on(3));
 }
+
+// Encender un led con número mayor al máximo (16)
+void test_encender_led_fuera_de_rango(void){
+    leds_turn_on(17);
+    TEST_ASSERT_EQUAL_HEX16(0x0000, puerto_virtual);
+}
