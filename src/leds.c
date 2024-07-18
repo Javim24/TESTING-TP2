@@ -3,6 +3,7 @@
 #define LED_OFFSET  1
 #define FIRST_BIT   1
 #define ALL_LEDS_OFF 0x0000
+#define ALL_LEDS_ON  0xFFFF
 
 static uint16_t * puerto_virtual;
 
@@ -24,5 +25,5 @@ void leds_turn_off(uint16_t led){
 }
 
 void leds_turn_on_all(){
-    *puerto_virtual = 0xFFFF;
+    *puerto_virtual = ALL_LEDS_ON;
 }
