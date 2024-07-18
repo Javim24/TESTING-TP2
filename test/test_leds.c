@@ -1,5 +1,4 @@
 /*
-- Voy a consultar el estado de  un led apagado y tiene que figurar como apagado
 - Revisar que los leds estén bien mapeados en memoria
 */
 
@@ -59,4 +58,10 @@ void test_prender_y_apagar_todos_leds_juntos(void){
 void test_prender_led_consultar_estado_encendido(void){
     leds_turn_on(3);
     TEST_ASSERT_TRUE(leds_is_led_on(3));
+}
+
+// Voy a consultar el estado de  un led apagado y tiene que figurar como apagado
+void test_consultar_estado_led_apagado(void){
+    leds_turn_off(3);
+    TEST_ASSERT_FALSE(leds_is_led_on(3));
 }
