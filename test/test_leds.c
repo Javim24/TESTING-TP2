@@ -18,3 +18,12 @@ void test_todos_los_leds_deben_arrancar_apagados(void){
     leds_init(&puerto_virtual);
     TEST_ASSERT_EQUAL_HEX16(0x0000, puerto_virtual);
 }
+
+void test_prender_un_solo_led(void){
+    uint16_t puerto_virtual;
+
+    leds_init(&puerto_virtual);
+    leds_turn_on(3);
+    TEST_ASSERT_EQUAL_HEX16(1 << 2, puerto_virtual);
+
+}

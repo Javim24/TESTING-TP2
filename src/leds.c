@@ -1,5 +1,16 @@
 #include "leds.h"
 
+static uint16_t * puerto_virtual;
+
 void leds_init(uint16_t * puerto){
-    *puerto = 0x0000;
+    puerto_virtual = puerto;
+    *puerto_virtual = 0x0000;
+}
+
+void leds_turn_on(uint16_t led){
+    *puerto_virtual = 4;
+}
+
+void leds_turn_on_all(){
+    *puerto_virtual = 0xFFFF;
 }
