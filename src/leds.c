@@ -11,29 +11,45 @@ static uint16_t led_to_mask(uint16_t led){
     return (FIRST_BIT << (led - LED_OFFSET));
 }
 
+static void port_set_value(uint16_t value){
+    *puerto_virtual = value;
+}
+
+static void port_apply_on_mask(uint16_t mask){
+    *puerto_virtual |= mask;
+}
+
+static void port_apply_off_mask(uint16_t mask){
+    *puerto_virtual &= ~mask;
+}
+
+static uint16_t port_get_value(void){
+    return *puerto_virtual;
+}
+
 void leds_init(uint16_t * puerto){
     puerto_virtual = puerto;
-    *puerto_virtual = ALL_LEDS_OFF;
+    leds_turn_off_all();
 }
 
 void leds_turn_on(uint16_t led){
-    *puerto_virtual |= led_to_mask(led);
+    port_apply_on_mask(led_to_mask(led));
 }
 
 void leds_turn_off(uint16_t led){
-    *puerto_virtual &= ~led_to_mask(led);
+    port_apply_off_mask(led_to_mask(led));
 }
 
 void leds_turn_on_all(){
-    *puerto_virtual = ALL_LEDS_ON;
+    port_set_value(ALL_LEDS_ON);
 }
 
 void leds_turn_off_all(){
-    *puerto_virtual = ALL_LEDS_OFF;
+    port_set_value(ALL_LEDS_OFF);
 }
 
 bool leds_is_led_on(uint16_t led){
-    return (bool) (*puerto_virtual & led_to_mask(led));
+    return (bool) (port_get_value() & led_to_mask(led));
 }
 
 uint16_t leds_led_to_mask(uint16_t led){
