@@ -35,3 +35,7 @@ void leds_turn_off_all(){
 bool leds_is_led_on(uint16_t led){
     return (bool) (*puerto_virtual & led_to_mask(led));
 }
+
+uint16_t leds_led_to_mask(uint16_t led){
+    return led_to_mask(led);
+}

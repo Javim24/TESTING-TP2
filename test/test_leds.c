@@ -1,8 +1,3 @@
-/*
-- Revisar que los leds estén bien mapeados en memoria
-*/
-
-
 #include "unity.h"
 #include "leds.h"
 
@@ -64,4 +59,9 @@ void test_prender_led_consultar_estado_encendido(void){
 void test_consultar_estado_led_apagado(void){
     leds_turn_off(3);
     TEST_ASSERT_FALSE(leds_is_led_on(3));
+}
+
+// Revisar que los leds estén bien mapeados en memoria
+void test_revisar_mapeo_de_leds_en_memoria(void){
+    TEST_ASSERT_EQUAL_HEX16(1 << 2, leds_led_to_mask(3));
 }
