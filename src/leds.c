@@ -31,3 +31,7 @@ void leds_turn_on_all(){
 void leds_turn_off_all(){
     *puerto_virtual = ALL_LEDS_OFF;
 }
+
+bool leds_is_led_on(uint16_t led){
+    return true;
+}
