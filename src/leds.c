@@ -5,29 +5,29 @@
 #define ALL_LEDS_OFF 0x0000
 #define ALL_LEDS_ON  0xFFFF
 
-static uint16_t * puerto_virtual;
+static led_port_t * puerto_virtual;
 
-static uint16_t led_to_mask(uint16_t led){
+static led_port_t led_to_mask(uint16_t led){
     return (FIRST_BIT << (led - LED_OFFSET));
 }
 
-static void port_set_value(uint16_t value){
+static void port_set_value(led_port_t value){
     *puerto_virtual = value;
 }
 
-static void port_apply_on_mask(uint16_t mask){
+static void port_apply_on_mask(led_port_t mask){
     *puerto_virtual |= mask;
 }
 
-static void port_apply_off_mask(uint16_t mask){
+static void port_apply_off_mask(led_port_t mask){
     *puerto_virtual &= ~mask;
 }
 
-static uint16_t port_get_value(void){
+static led_port_t port_get_value(void){
     return *puerto_virtual;
 }
 
-void leds_init(uint16_t * puerto){
+void leds_init(led_port_t * puerto){
     puerto_virtual = puerto;
     leds_turn_off_all();
 }
@@ -52,6 +52,6 @@ bool leds_is_led_on(uint16_t led){
     return (bool) (port_get_value() & led_to_mask(led));
 }
 
-uint16_t leds_led_to_mask(uint16_t led){
+led_port_t leds_led_to_mask(uint16_t led){
     return led_to_mask(led);
 }
