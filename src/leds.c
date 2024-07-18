@@ -1,18 +1,26 @@
 #include "leds.h"
 
+#define LED_OFFSET  1
+#define FIRST_BIT   1
+#define ALL_LEDS_OFF 0x0000
+
 static uint16_t * puerto_virtual;
+
+static uint16_t led_to_mask(uint16_t led){
+    return (FIRST_BIT << (led - LED_OFFSET));
+}
 
 void leds_init(uint16_t * puerto){
     puerto_virtual = puerto;
-    *puerto_virtual = 0x0000;
+    *puerto_virtual = ALL_LEDS_OFF;
 }
 
 void leds_turn_on(uint16_t led){
-    *puerto_virtual |= (1 << (led - 1));
+    *puerto_virtual |= led_to_mask(led);
 }
 
 void leds_turn_off(uint16_t led){
-    *puerto_virtual &= ~(1 << (led - 1));
+    *puerto_virtual &= ~led_to_mask(led);
 }
 
 void leds_turn_on_all(){
