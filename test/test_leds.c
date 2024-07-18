@@ -65,3 +65,12 @@ void test_consultar_estado_led_apagado(void){
 void test_revisar_mapeo_de_leds_en_memoria(void){
     TEST_ASSERT_EQUAL_HEX16(1 << 2, leds_led_to_mask(3));
 }
+
+// Encender dos leds, apagar uno y consultar el estado de ambos
+void test_encender_dos_leds_apagar_uno_consultar_estado(void){
+    leds_turn_on(3);
+    leds_turn_on(4);
+    leds_turn_off(3);
+    TEST_ASSERT_TRUE(leds_is_led_on(4));
+    TEST_ASSERT_FALSE(leds_is_led_on(3));
+}
