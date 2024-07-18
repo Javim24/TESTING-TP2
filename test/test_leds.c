@@ -1,5 +1,4 @@
 /*
-- Prender dos leds, apagar uno, y ver que solo se apaga el que corresponde y que el otro sigue prendido
 - Prender todos los leds juntos
 - Prender y apagar todos los leds juntos
 - Prender un led, voy a consultar el estado y tiene que figurar como prendido
@@ -36,4 +35,12 @@ void test_prender_apagar_un_solo_led(void){
     leds_turn_on(3);
     leds_turn_off(3);
     TEST_ASSERT_EQUAL_HEX16(0x0000, puerto_virtual);
+}
+
+// Prender dos leds, apagar uno, y ver que solo se apaga el que corresponde y que el otro sigue prendido
+void test_prender_dos_leds_y_apagar_un_led(void){
+    leds_turn_on(3);
+    leds_turn_on(7);
+    leds_turn_off(3);
+    TEST_ASSERT_EQUAL_HEX16(1 << 6, puerto_virtual);
 }
