@@ -11,6 +11,10 @@ void leds_turn_on(uint16_t led){
     *puerto_virtual = 4;
 }
 
+void leds_turn_off(uint16_t led){
+    *puerto_virtual = 0;
+}
+
 void leds_turn_on_all(){
     *puerto_virtual = 0xFFFF;
 }
