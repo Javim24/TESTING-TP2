@@ -54,14 +54,14 @@ typedef uint16_t led_port_t;
 /**
  * @brief Función que inicializa el driver de leds.
  *
- * @param puerto
+ * @param puerto: Puntero al puerto en que están conectados los leds.
  */
 void leds_init(led_port_t * puerto);
 
 /**
  * @brief Enciende un led.
  *
- * @param led
+ * @param led: Número de led que se quiere encender.
  */
 void leds_turn_on(uint16_t led);
 
@@ -74,7 +74,7 @@ void leds_turn_on_all(void);
 /**
  * @brief Apaga un led.
  *
- * @param led
+ * @param led: Número de led que se quiere apagar.
  */
 void leds_turn_off(uint16_t led);
 
@@ -87,7 +87,7 @@ void leds_turn_off_all(void);
 /**
  * @brief Consulta si un led está encendido.
  *
- * @param led
+ * @param led: Número de led que se quiere consultar si está encendido.
  * @return true si el led está encendido.
  * @return false si el led está apagado.
  */
@@ -96,7 +96,7 @@ bool leds_is_led_on(uint16_t led);
 /**
  * @brief Devuelve el mapeo en memoria a partir de un número de led.
  *
- * @param led
+ * @param led: Número de led del que se quiere obtener el mapeo en memoria.
  * @return led_port_t
  */
 led_port_t leds_led_to_mask(uint16_t led);

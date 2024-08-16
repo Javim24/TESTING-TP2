@@ -49,7 +49,7 @@ static led_port_t * puerto_virtual;
 /**
  * @brief Genera una máscara para la posición en memoria de cada led.
  *
- * @param led
+ * @param led: Número de led del que se quiere obtener la máscara.
  * @return led_port_t
  */
 static led_port_t led_to_mask(uint16_t led) {
@@ -59,7 +59,7 @@ static led_port_t led_to_mask(uint16_t led) {
 /**
  * @brief Cambia el estado del puerto al que diga el parámetro value.
  *
- * @param value
+ * @param value: Valor que se quiere configurar en el puerto.
  */
 static void port_set_value(led_port_t value) {
     *puerto_virtual = value;
@@ -68,7 +68,7 @@ static void port_set_value(led_port_t value) {
 /**
  * @brief Aplica una máscara para encender un led.
  *
- * @param mask
+ * @param mask: Máscara que se aplica para el encendido de leds.
  */
 static void port_apply_on_mask(led_port_t mask) {
     *puerto_virtual |= mask;
@@ -77,7 +77,7 @@ static void port_apply_on_mask(led_port_t mask) {
 /**
  * @brief Aplica una máscara para apagar un led.
  *
- * @param mask
+ * @param mask: Máscara que se aplica para el apagado de leds.
  */
 static void port_apply_off_mask(led_port_t mask) {
     *puerto_virtual &= ~mask;
@@ -86,7 +86,7 @@ static void port_apply_off_mask(led_port_t mask) {
 /**
  * @brief Devuelve el estado actual del puerto.
  *
- * @return led_port_t
+ * @return led_port_t: Valor que está almacenado en el puerto.
  */
 static led_port_t port_get_value(void) {
     return *puerto_virtual;
