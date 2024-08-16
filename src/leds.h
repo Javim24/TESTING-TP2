@@ -29,7 +29,6 @@ SPDX-License-Identifier: MIT
  * @date 2024-07-18
  *
  * @copyright Copyright (c) 2024
- *
  */
 
 /* === Headers files inclusions ================================================================ */
@@ -67,7 +66,6 @@ void leds_turn_on(uint16_t led);
 
 /**
  * @brief Enciende todos los leds a la vez.
- *
  */
 void leds_turn_on_all(void);
 
@@ -80,7 +78,6 @@ void leds_turn_off(uint16_t led);
 
 /**
  * @brief Apaga todos los leds a la vez.
- *
  */
 void leds_turn_off_all(void);
 

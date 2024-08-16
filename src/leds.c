@@ -41,7 +41,6 @@ SPDX-License-Identifier: MIT
 /* === Private variable declarations =========================================================== */
 /**
  * @brief Variable privada que almacena el puerto de leds.
- *
  */
 static led_port_t * puerto_virtual;
 
