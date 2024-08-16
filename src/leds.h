@@ -27,11 +27,10 @@ SPDX-License-Identifier: MIT
  * @author Javier Mosconi (jfmosconi@gmail.com)
  * @brief Declaración de funciones públicas para el driver de leds
  * @date 2024-07-18
- * 
+ *
  * @copyright Copyright (c) 2024
- * 
+ *
  */
-
 
 /* === Headers files inclusions ================================================================ */
 #include <stdint.h>
@@ -54,41 +53,41 @@ typedef uint16_t led_port_t;
 
 /**
  * @brief Función que inicializa el driver de leds.
- * 
- * @param puerto 
+ *
+ * @param puerto
  */
 void leds_init(led_port_t * puerto);
 
 /**
  * @brief Enciende un led.
- * 
- * @param led 
+ *
+ * @param led
  */
 void leds_turn_on(uint16_t led);
 
 /**
  * @brief Enciende todos los leds a la vez.
- * 
+ *
  */
 void leds_turn_on_all(void);
 
 /**
  * @brief Apaga un led.
- * 
- * @param led 
+ *
+ * @param led
  */
 void leds_turn_off(uint16_t led);
 
 /**
  * @brief Apaga todos los leds a la vez.
- * 
+ *
  */
 void leds_turn_off_all(void);
 
 /**
  * @brief Consulta si un led está encendido.
- * 
- * @param led 
+ *
+ * @param led
  * @return true si el led está encendido.
  * @return false si el led está apagado.
  */
@@ -96,9 +95,9 @@ bool leds_is_led_on(uint16_t led);
 
 /**
  * @brief Devuelve el mapeo en memoria a partir de un número de led.
- * 
- * @param led 
- * @return led_port_t 
+ *
+ * @param led
+ * @return led_port_t
  */
 led_port_t leds_led_to_mask(uint16_t led);
 

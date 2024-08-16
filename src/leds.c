@@ -24,106 +24,102 @@ SPDX-License-Identifier: MIT
  * @author Javier Mosconi (jfmosconi@gmail.com)
  * @brief Implementación de funciones públicas y privadas del driver de leds
  * @date 2024-07-18
- * 
+ *
  * @copyright Copyright (c) 2024
- * 
+ *
  */
 
 /* === Headers files inclusions =============================================================== */
 #include "leds.h"
 
-
 /* === Macros definitions ====================================================================== */
-#define LED_OFFSET  1
-#define FIRST_BIT   1
+#define LED_OFFSET   1
+#define FIRST_BIT    1
 #define ALL_LEDS_OFF 0x0000
 #define ALL_LEDS_ON  0xFFFF
-
 
 /* === Private variable declarations =========================================================== */
 /**
  * @brief Variable privada que almacena el puerto de leds.
- * 
+ *
  */
 static led_port_t * puerto_virtual;
-
 
 /* === Private function declarations =========================================================== */
 /**
  * @brief Genera una máscara para la posición en memoria de cada led.
- * 
- * @param led 
- * @return led_port_t 
+ *
+ * @param led
+ * @return led_port_t
  */
-static led_port_t led_to_mask(uint16_t led){
+static led_port_t led_to_mask(uint16_t led) {
     return (FIRST_BIT << (led - LED_OFFSET));
 }
 
 /**
  * @brief Cambia el estado del puerto al que diga el parámetro value.
- * 
- * @param value 
+ *
+ * @param value
  */
-static void port_set_value(led_port_t value){
+static void port_set_value(led_port_t value) {
     *puerto_virtual = value;
 }
 
 /**
  * @brief Aplica una máscara para encender un led.
- * 
- * @param mask 
+ *
+ * @param mask
  */
-static void port_apply_on_mask(led_port_t mask){
+static void port_apply_on_mask(led_port_t mask) {
     *puerto_virtual |= mask;
 }
 
 /**
  * @brief Aplica una máscara para apagar un led.
- * 
- * @param mask 
+ *
+ * @param mask
  */
-static void port_apply_off_mask(led_port_t mask){
+static void port_apply_off_mask(led_port_t mask) {
     *puerto_virtual &= ~mask;
 }
 
 /**
  * @brief Devuelve el estado actual del puerto.
- * 
- * @return led_port_t 
+ *
+ * @return led_port_t
  */
-static led_port_t port_get_value(void){
+static led_port_t port_get_value(void) {
     return *puerto_virtual;
 }
 
-
 /* === Public function implementation ========================================================== */
 
-void leds_init(led_port_t * puerto){
+void leds_init(led_port_t * puerto) {
     puerto_virtual = puerto;
     leds_turn_off_all();
 }
 
-void leds_turn_on(uint16_t led){
+void leds_turn_on(uint16_t led) {
     port_apply_on_mask(led_to_mask(led));
 }
 
-void leds_turn_off(uint16_t led){
+void leds_turn_off(uint16_t led) {
     port_apply_off_mask(led_to_mask(led));
 }
 
-void leds_turn_on_all(){
+void leds_turn_on_all() {
     port_set_value(ALL_LEDS_ON);
 }
 
-void leds_turn_off_all(){
+void leds_turn_off_all() {
     port_set_value(ALL_LEDS_OFF);
 }
 
-bool leds_is_led_on(uint16_t led){
-    return (bool) (port_get_value() & led_to_mask(led));
+bool leds_is_led_on(uint16_t led) {
+    return (bool)(port_get_value() & led_to_mask(led));
 }
 
-led_port_t leds_led_to_mask(uint16_t led){
+led_port_t leds_led_to_mask(uint16_t led) {
     return led_to_mask(led);
 }
 
