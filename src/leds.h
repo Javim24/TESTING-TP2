@@ -90,14 +90,6 @@ void leds_turn_off_all(void);
  */
 bool leds_is_led_on(uint16_t led);
 
-/**
- * @brief Devuelve el mapeo en memoria a partir de un número de led.
- *
- * @param led: Número de led del que se quiere obtener el mapeo en memoria.
- * @return led_port_t
- */
-led_port_t leds_led_to_mask(uint16_t led);
-
 /* === End of documentation ==================================================================== */
 
 #ifdef __cplusplus

@@ -118,13 +118,6 @@ void test_consultar_estado_led_apagado(void) {
 }
 
 /**
- * @brief Test que verifica el mapeo en memoria de los leds.
- */
-void test_revisar_mapeo_de_leds_en_memoria(void) {
-    TEST_ASSERT_EQUAL_HEX16(1 << 2, leds_led_to_mask(3));
-}
-
-/**
  * @brief Test que enciende dos leds, apaga uno y consulta el estado de ambos.
  */
 void test_encender_dos_leds_apagar_uno_consultar_estado(void) {
