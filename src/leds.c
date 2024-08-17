@@ -26,7 +26,6 @@ SPDX-License-Identifier: MIT
  * @date 2024-07-18
  *
  * @copyright Copyright (c) 2024
- *
  */
 
 /* === Headers files inclusions =============================================================== */
