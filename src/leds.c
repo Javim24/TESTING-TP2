@@ -33,10 +33,27 @@ SPDX-License-Identifier: MIT
 #include "leds.h"
 
 /* === Macros definitions ====================================================================== */
-#define LED_OFFSET   1
-#define FIRST_BIT    1
+/**
+ * @brief Constante que indica el offset de cada led para mapearlo al puerto.
+ */
+#define LED_OFFSET 1
+
+/**
+ * @brief Constante que indica el valor que tiene que tener el bit correspondiente
+ *        a un led para que esté encendido.
+ */
+#define FIRST_BIT 1
+/**
+ * @brief Macro que indica el valor que tiene que escribirse al puerto
+ *        para que todos los leds estén apagados.
+ */
 #define ALL_LEDS_OFF 0x0000
-#define ALL_LEDS_ON  0xFFFF
+
+/**
+ * @brief Macro que indica el valor que tiene que escribirse al puerto
+ *        para que todos los leds estén encendidos.
+ */
+#define ALL_LEDS_ON 0xFFFF
 
 /* === Private variable declarations =========================================================== */
 /**
